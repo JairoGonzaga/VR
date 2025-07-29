@@ -40,6 +40,7 @@ def get_args():
 
 def main():
     # Argument parsing #################################################################
+    print('\nParsing arguments...')
     args = get_args()
 
     cap_device = args.device
@@ -54,11 +55,19 @@ def main():
 
     # Camera preparation ###############################################################
     cap = cv.VideoCapture(cap_device)
+    
+    if not cap.isOpened():
+        print('Error: Camera not found.')
+        exit(1)
+    else:
+        print('Opening camera...')
+    
     cap.set(cv.CAP_PROP_FRAME_WIDTH, cap_width)
     cap.set(cv.CAP_PROP_FRAME_HEIGHT, cap_height)
 
     # Model load #############################################################
     mp_hands = mp.solutions.hands
+    print('Loading MediaPipe Hands model...')
     hands = mp_hands.Hands(
         static_image_mode=use_static_image_mode,
         max_num_hands=2,
@@ -161,7 +170,7 @@ def main():
                 # Drawing part
                 debug_image = draw_bounding_rect(use_brect, debug_image, brect)
                 debug_image = draw_landmarks(debug_image, landmark_list)
-                print(most_common_fg_id[0][0])
+                # print(most_common_fg_id[0][0])
                 debug_image = draw_info_text(
                     debug_image,
                     brect,
