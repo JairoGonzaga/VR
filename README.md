@@ -1,3 +1,33 @@
+# Como rodar o projeto
+
+Siga os passos abaixo para rodar o projeto em um ambiente virtual com Python 3.8:
+
+1. **Crie o ambiente virtual:**
+    ```bash
+    py -3.8 -m venv venv
+    ```
+
+2. **Ative o ambiente virtual:**
+    - No Windows:
+      ```bash
+      venv\Scripts\activate
+      ```
+    - No Linux/Mac:
+      ```bash
+      source venv/bin/activate
+      ```
+
+3. **Instale as dependências:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. **Rode o aplicativo:**
+    ```bash
+    python app.py
+    ```
+
+
 # hand-gesture-recognition-using-mediapipe
 Estimate hand pose using MediaPipe (Python version).<br> This is a sample 
 program that recognizes hand signs and finger gestures with a simple MLP using the detected key points.
